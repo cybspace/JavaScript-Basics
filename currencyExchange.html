@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+  var dollarExch = 65.6;
+  var euroExch = 72.6;
+  var rubleSumma = +prompt("Сколько у вас рублей?");
+  alert("Ваши " + rubleSumma + "₽ равны " + rubleSumma / dollarExch + "$ по курсу 1$ = " +
+  dollarExch + "₽ или " + rubleSumma / euroExch + "€ по курсу 1€ = " + euroExch + "₽");
+
+  var answer = prompt("Хотите посчитать по своему курсу? (введите да или нет)");
+  if (answer == "да") {
+    var dollarExch = +prompt("Введите курс доллара (для дробной части используйте точку):");
+    if (dollarExch > 0 ) {
+      var euroExch = +prompt("Введите курс евро (для дробной части используйте точку):");
+      if (euroExch > 0) {
+        alert("Ваши " + rubleSumma + "₽ равны " + rubleSumma / dollarExch + "$ по курсу 1$ = " +
+        dollarExch + "₽ или " + rubleSumma / euroExch + "€ по курсу 1€ = " + euroExch + "₽");
+      }
+      else {
+        alert("Неверное курс евро! Для дробной части используйте точку. Курс должен быть больше нуля.");
+      }
+    }
+    else {
+      alert("Неверное курс доллара! Для дробной части используйте точку. Курс должен быть больше нуля.");
+    }
+  }
+  else if (answer == "нет") {
+    alert("Пока!");
+  }
+  else {
+    alert("Я понимаю только -да- или -нет- маленькими буквами на русском языке!")
+  }
+
+</script>
