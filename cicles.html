@@ -1,0 +1,23 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+//цикл do {} while ()
+do {
+  var num = +prompt("Программа позволяет подсчитать сумму всех чисел до заданного числа. \n\nВведите положительное число:");
+} while (num < 0);
+
+  var result = 0;
+
+// цикл for (var i = 0; i < number; i++) {}
+  for (var i = num; i > 0; i--) {
+    result += i; // result = result + i
+  }
+
+  alert("Сумма всех чисел до " + num + " равна " + result);
+
+//цикл while
+  while(true) { //безконечный цикл
+    break; // выход из цикла
+  }
+
+</script>
