@@ -1,40 +1,112 @@
-<meta charset="utf-8">
-<script type="text/javascript">
-// Игра "Угадай число". Компьютер загадывает число от 0 до 100. Пользователь пытается его угадать.
-// Если число больше или меньше угаданного - компьютер сообщает лю этом.
-// Также подсчитываем число попыток.
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/master.css">
+    <title>Угадай число</title>
+  </head>
+  <body>
+    <div id="header">
+      <div id="header">
+        <a href="index.html">Главная</a> <span>/</span>
+        <a href="riddles.html">Загадки</a> <span>/</span>
+        <a href="sneakyComputer.html">Угадай число</a> <span>/</span>
+        <a href="currencyExchange.html">Конвертер валют</a>
+      </div>
 
-  var number = (Math.random() * 100).toFixed(0); //Math.random() выдет рандомное число от 0 до 1
-  alert("Я загадал число от 0 до 100. \nПопробуй его угадать!");
-  var guess = +prompt("Введи число:");
-  //если введено число за границами 0..100
-  while (guess < 0 || guess > 100) {
-    guess = +prompt("Я же сказал, от 0 до 100!");
-  }
+      <div id="content">
+        <h1>Угадай число</h1>
+        <div id="center">
+          <img src="img/me.jpg" alt="Это Я!" />
+          <div id="box_text">
+            <p>
+              Я загадал число от 0 до 100. Попробуй его угадать за 5 попыток!
+            </p>
+            <p id="result">
 
-  var count = 1; //считаем число попыток
-  while (guess != number) {
-    count++;
-    if (guess < number) {
-      if (number - guess <= 10) {
-        guess = +prompt("Совсем близко, но мое число больше!");
-      }
-      else {
-        guess = +prompt("Мое число больше!");
-      }
-    }
-    else {
-      if (guess - number <= 10) {
-        guess = +prompt("Совсем близко, но мое число меньше!");
-      }
-      else {
-        guess = +prompt("Мое число меньше!");
-      }
-    }
-  }
+            </p>
+            <a id="guessNumber" href="#">Начать!</a>
 
-alert("Молодец!\n\nТы угадал за " + count + " попыток!");
+            <script type="text/javascript">
+            // Wait for the page to load first
+              window.onload = function() {
 
-  window.location.href = 'index.html';
+                //Get a reference to the link on the page
+                // with an id of "mylink"
+                var a = document.getElementById("guessNumber");
 
-</script>
+                //Set code to run when the link is clicked
+                // by assigning a function to "onclick"
+                a.onclick = function() {
+
+                  // Your code here...
+                  // Игра "Угадай число". Компьютер загадывает число от 0 до 100. Пользователь пытается его угадать.
+                  // Если число больше или меньше угаданного - компьютер сообщает лю этом.
+                  // Также подсчитываем число попыток.
+
+                    var number = (Math.random() * 100).toFixed(0); //Math.random() выдет рандомное число от 0 до 1
+
+                    var guess = +prompt("Введи число:");
+                    //если введено число за границами 0..100
+                    while (guess < 0 || guess > 100) {
+                      guess = +prompt("Я же сказал, от 0 до 100! Эту попытку считать не буду!");
+                    }
+
+                    var count = 1; //считаем число попыток
+
+                    while (guess != number && count < 5) {
+
+                      if (guess > 100 || guess < 0) {
+                        guess = +prompt("Я же говорю, от 0 до 100! Ты впустую тратишь попытки! \n Осталось попыток: " + (5 - count) + ".");
+                      }
+                      else {
+                        if (guess < number) {
+                          if (number - guess <= 10) {
+                            guess = +prompt("Совсем близко, но мое число больше! \n Осталось попыток: " + (5 - count) + ".");
+                          }
+                          else {
+                            guess = +prompt("Мое число больше!  \n Осталось попыток: " + (5 - count) + ".");
+                          }
+                        }
+                        else {
+                          if (guess - number <= 10) {
+                            guess = +prompt("Совсем близко, но мое число меньше! \n Осталось попыток: " + (5 - count) + ".");
+                          }
+                          else {
+                            guess = +prompt("Мое число меньше! \n Осталось попыток: " + (5 - count) + ".");
+                          }
+                        }
+                      }
+
+                      count++;
+                    }
+
+                    if (guess == number) {
+                      var comment = "Правильно! Количество попыток: " + count + ".";
+                    }
+                    else {
+                      var comment = "Попытки кончились! Еще разок?";
+                    }
+
+                    document.getElementById('result').innerHTML = comment;
+                  //If you don't want the link to actually
+                  // redirect the browser to another page,
+                  // "google.com" in our example here, then
+                  // return false at the end of this block.
+                  // Note that this also prevents event bubbling,
+                  // which is probably what we want here, but won't
+                  // always be the case.
+                  return false;
+                }
+              }
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer">
+        Copyright © 2016 <a href="index.html">KODIB4NX</a>
+      </div>
+    </div>
+  </body>
+</html>
