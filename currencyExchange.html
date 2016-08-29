@@ -7,7 +7,7 @@
     <script type="text/javascript">
       window.onload = function() {
         document.getElementById('intro').innerHTML = "Я могу перевести любую сумму рублей в доллары и евро.";
-        var usd, eur, rub;
+        var usd, eur, rub, rubInUsd, rubInEur;
 
         var usdLink = document.getElementById('usd');
         usdLink.onclick = function() {
@@ -16,6 +16,11 @@
             usd = +prompt("Вы ввели неверное значение. \n\n1. Курс должен быть больше нуля.\n2. Для десятичной части используйте точку. \n\nПовторите ввод:");
           }
           document.getElementById('usdResult').innerHTML = ("Курс доллара: 1$ = " + usd + "₽.");
+
+          if (rub) {
+            rubInUsd = (rub / usd).toFixed(2);
+            document.getElementById('rubInUsd').innerHTML = rubInUsd;
+          }
         }
 
         var eurLink = document.getElementById('eur');
@@ -24,7 +29,13 @@
           while (eur < 0 || isNaN(0 + eur)) {
             eur = +prompt("Вы ввели неверное значение. \n\n1. Курс должен быть больше нуля.\n2. Для десятичной части используйте точку. \n\nПовторите ввод:");
           }
+
           document.getElementById('eurResult').innerHTML = ("Курс евро: 1€ = " + eur + "₽.");
+
+          if (rub) {
+            rubInEur = (rub / eur).toFixed(2);
+            document.getElementById('rubInEur').innerHTML = rubInEur;
+          }
         }
 
         var rubLink = document.getElementById('rub');
@@ -35,16 +46,25 @@
           }
 
           if (usd && eur) {
-            var rubResult = "Ваши " + rub + "₽ равняются " + (rub / usd).toFixed(2) + "$ или " + (rub / usd).toFixed(2) + "€.";
+            var alfa = 0;
           }
           else {
             usd = 65.44;
             eur = 72.34;
             document.getElementById('usdResult').innerHTML = ("Курс доллара: 1$ = " + usd + "₽.");
             document.getElementById('eurResult').innerHTML = ("Курс евро: 1€ = " + eur + "₽.");
-            var rubResult = "Ваши " + rub + "₽ равняются " + (rub / usd).toFixed(2) + "$ или " + (rub / usd).toFixed(2) + "€.";
           }
-          document.getElementById('rubResult').innerHTML = rubResult;
+          rubInUsd = (rub / usd).toFixed(2);
+          rubInEur = (rub / eur).toFixed(2);
+          if (rubResult) {
+            document.getElementById('rubrub').innerHTML = rub;
+            document.getElementById('rubInEur').innerHTML = rubInUsd;
+            document.getElementById('rubInEur').innerHTML = rubInEur;
+          }
+          else {
+            var rubResult = "Ваши <span id=rubrub>" + rub + "</span>₽ равняются <span id=rubInUsd>" + rubInUsd + "</span>$ или <span id=rubInEur>" + rubInEur + "</span>€.";
+            document.getElementById('rubResult').innerHTML = rubResult;
+          }
         }
       }
     </script>
