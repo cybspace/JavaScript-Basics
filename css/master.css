@@ -95,11 +95,26 @@ body {
     margin-bottom: 31px;
 }
 
-#content #box_text a  {
+ a  {
     color: #40678a;
     font-size: 24px;
     font-weight: 100;
     text-decoration: none;
+}
+
+#content #box_text #pageLinks {
+  width: 671px;
+  height: 33px;
+  text-align: center;
+}
+
+.inboxLinks  {
+    color: #40678a;
+    font-size: 18px;
+    font-weight: 100;
+    text-align: center;
+    text-decoration: none;
+    padding-right:10px;
 }
 
 #content #box_text #links  {
