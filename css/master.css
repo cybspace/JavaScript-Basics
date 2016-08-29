@@ -49,6 +49,10 @@ body {
     margin: 0 auto;
 }
 
+#content span {
+    padding: 0 0;
+}
+
 #content h1 {
     min-width: 1200px;
     text-align: center;
