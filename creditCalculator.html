@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/master.css">
+  <title>Кредитный калькулятор</title>
+  <script type="text/javascript">
+    window.onload = function() {
+      document.getElementById('intro').innerHTML = "Я помогу тебе расчитать график платежей."
+
+      var loan, interest, time;
+      var countLoan = 0, countInterest = 0, countTime = 0, countCalculate = 0;
+      // Вводим сумму кредита
+      var loanInput = document.getElementById('loanInput');
+      loanInput.onclick = function() {
+        loan = +prompt("Введите сумму кредита:");
+        while (loan <= 0 || isNaN(loan)) {
+          loan = +prompt("Неверное значение. \n\n1. Сумма должна быть больше нуля. \n2. Для дробной части используйте точку. \n\nПовторите ввод:");
+        }
+        if (countLoan == 0) {
+          countLoan++;
+          document.getElementById('loan').innerHTML = "Сумма кредита: <span id=loanAmount>" + loan + "</span>."
+        }
+        else {
+          document.getElementById('loanAmount').innerHTML = loan;
+        }
+      }
+      // Вводим сумму процентов
+      var interestInput = document.getElementById('interestInput');
+      interestInput.onclick = function() {
+        interest = +prompt("Введите процентную ставку по кредиту:");
+        while (interest < 0 || isNaN(interest)) {
+          interest = +prompt("Неверное значение. \n\n1. Процентная ставка не может быть меньше нуля. \n2. Для дробной части используйте точку. \n\nПовторите ввод:");
+        }
+        if (countInterest == 0) {
+          countInterest++;
+          document.getElementById('interest').innerHTML = "Процентная ставка: <span id=interestAmount>" + interest + "</span>%."
+        }
+        else {
+          document.getElementById('interestAmount').innerHTML = interest;
+        }
+      }
+      // Вводим срок
+      var timeInput = document.getElementById('timeInput');
+      timeInput.onclick = function() {
+        time = +prompt("Введите срок в месяцах:");
+        while (time <= 0 || isNaN(time) || (time - time.toFixed(0) != 0)) {
+          time = +prompt("Неверное значение. \n\n1. Срок должен быть больше нуля. \n2. Вводите целое число (без дробной части). \n\nПовторите ввод:");
+        }
+        if (countTime == 0) {
+          countTime++;
+          document.getElementById('time').innerHTML = "Срок кредитования: <span id=timeAmount>" + time + "</span> месяцев."
+        }
+        else {
+          document.getElementById('timeAmount').innerHTML = time;
+        }
+      }
+      // Рассчитываем график
+      var calculate = document.getElementById('calculate');
+      calculate.onclick = function() {
+        var monthInterest = interest/12;
+        var monthPayment = loan * (monthInterest + monthInterest/(Math.pow(1 + monthInterest, time) - 1));
+        var paymentLoan, paymentInterest, loanRest;
+        loanRest = loan;
+        /*for (var i = 1; i <= time; i++) {
+          if (i == 1) {
+            document.getElementById('resultTable').innerHTML = "<table><tr><th>Месяц</th><th>Платеж</th><th>Сумма платежа</th><th>Сумма основного долга</th><th>Сумма процентов</th><th>Остаток Основного долга</th></tr>";
+          }
+          else if (i == time) {
+            document.getElementById('resultTable').innerHTML += "<tr><td>" + i +" месяц</td><td id=monthPayment" + i + ">" + monthPayment + "</td><td id=paymentLoan" + i + "></td><td id=paymentInterest" + i + "></td><td id=loanRest" + i + "></td><td" + i + "></td></tr>";
+            document.getElementById('resultTable').innerHTML += "</table>"
+          }
+          else {
+            document.getElementById('resultTable').innerHTML += "<tr><td>" + i +" месяц</td><td id=monthPayment" + i + ">" + monthPayment + "</td><td id=paymentLoan" + i + "></td><td id=paymentInterest" + i + "></td><td id=loanRest" + i + "></td><td" + i + "></td></tr>";
+          }
+        }*/
+
+      document.getElementById('resultTable').innerHTML = "График платежей: <br/>"
+
+      for (var i = 1; i <= time; i++) {
+          paymentInterest = loanRest * monthInterest;
+          paymentLoan = monthPayment - paymentInterest;
+          loanRest -= monthPayment;
+          document.getElementById('resultTable').innerHTML += "Месяц: " + i + "Платеж: " + monthPayment.toFixed(2) + "Сумма ОД: " + paymentLoan.toFixed(2) + "Сумма %: " + paymentInterest.toFixed(2) + "Остаток: " + loanRest.toFixed(2) + "</br>";
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <body>
+    <div id="header">
+      <div id="header">
+        <a href="index.html">Главная</a> <span>/</span>
+        <a href="riddles.html">Загадки</a> <span>/</span>
+        <a href="sneakyComputer.html">Угадай число</a> <span>/</span>
+        <a href="currencyExchange.html">Конвертер валют</a> <span>/</span>
+        <a href="creditCalculator.html">Кредитный калькулятор</a>
+      </div>
+
+      <div id="content">
+        <h1>Конвертер валют</h1>
+        <div id="center">
+          <img src="img/me.jpg" alt="Это Я!" />
+          <div id="box_text">
+            <p id="intro">
+
+            </p>
+            <p id="loan">
+
+            </p>
+            <p id="interest">
+
+            </p>
+            <p id="time">
+
+            </p>
+            <p id="resultTable">
+
+            </p>
+            <a href="#" class="inboxLink" id="loanInput">Задать сумму кредита</a>/
+            <a href="#" class="inboxLink" id="interestInput">Задать % ставку</a>/
+            <a href="#" class="inboxLink" id="timeInput">Задать срок</a>/
+            <a href="#" class="inboxLink" id="calculate">Рассчитать!</a>
+            <p>
+
+            </p>
+            <div id="pageLinks">
+              <a href="riddles.html" id="links">Загадки</a>
+              <a href="sneakyComputer.html" id="links">Угадай число</a>
+              <a href="currencyExchange.html" id="links">Конвертер валют</a>
+              <a href="creditCalculator.html">Кредитный калькулятор</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="footer">
+        Copyright © 2016 <a href="index.html">KODIB4NX</a>
+      </div>
+    </div>
+</body>
+</html>
