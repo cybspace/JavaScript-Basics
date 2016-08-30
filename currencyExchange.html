@@ -6,66 +6,79 @@
     <title>Конвертер валют</title>
     <script type="text/javascript">
       window.onload = function() {
-        document.getElementById('intro').innerHTML = "Я могу перевести любую сумму рублей в доллары и евро.";
-        var usd, eur, rub, rubInUsd, rubInEur;
 
-        var usdLink = document.getElementById('usd');
-        usdLink.onclick = function() {
-          usd = +prompt("Введите курс доллара (для десятичной части используйте точку):");
-          while (usd <= 0 || isNaN(0 + usd)) {
-            usd = +prompt("Вы ввели неверное значение. \n\n1. Курс должен быть больше нуля.\n2. Для десятичной части используйте точку. \n\nПовторите ввод:");
-          }
-          document.getElementById('usdResult').innerHTML = ("Курс доллара: 1$ = " + usd + "₽.");
+        var usd = 65.44, eur = 73.89, usdRub, eurRub, rubAmmount, clickCalc = 0;
 
-          if (rub) {
-            rubInUsd = (rub / usd).toFixed(2);
-            document.getElementById('rubInUsd').innerHTML = rubInUsd;
-          }
-        }
+        document.getElementById('intro').innerHTML = "Я помогу тебе расчитать свои рубли в долларах и евро."
+        document.getElementById('usdResult').innerHTML = "Курс доллара: 1$ = <span id=usdRub>" + usd + "</span>₽."
+        document.getElementById('eurResult').innerHTML = "Курс евро: 1€ = <span id=eurRub>" + eur + "</span>₽."
+        document.getElementById('rubResult').innerHTML = "Необходимо задать сумму в рублях. Также ты можешь задать свои курсы для доллара и евро."
 
-        var eurLink = document.getElementById('eur');
-        eurLink.onclick = function() {
-          eur = +prompt("Введите курс евро (для десятичной части используйте точку):");
-          while (eur < 0 || isNaN(0 + eur)) {
-            eur = +prompt("Вы ввели неверное значение. \n\n1. Курс должен быть больше нуля.\n2. Для десятичной части используйте точку. \n\nПовторите ввод:");
-          }
-
-          document.getElementById('eurResult').innerHTML = ("Курс евро: 1€ = " + eur + "₽.");
-
-          if (rub) {
-            rubInEur = (rub / eur).toFixed(2);
-            document.getElementById('rubInEur').innerHTML = rubInEur;
-          }
-        }
-
-        var rubLink = document.getElementById('rub');
-        rubLink.onclick = function() {
-          rub = +prompt("Введите сумму в рублях (для десятичной части используйте точку):");
-          while (rub < 0 || isNaN(0 + rub)) {
-            usd = +prompt("Вы ввели неверное значение. \n\n1. Сумма должна быть больше нуля.\n2. Для десятичной части используйте точку. \n\nПовторите ввод:");
-          }
-
-          if (usd && eur) {
-            var alfa = 0;
+        var numChecker = function(num) {
+          var check = 0 - num;
+          //проверяем что num это число и оно не отрицательно (0 - num) < 0
+          if (isNaN(check) || check >= 0) {
+            return 1;
           }
           else {
-            usd = 65.44;
-            eur = 72.34;
-            document.getElementById('usdResult').innerHTML = ("Курс доллара: 1$ = " + usd + "₽.");
-            document.getElementById('eurResult').innerHTML = ("Курс евро: 1€ = " + eur + "₽.");
-          }
-          rubInUsd = (rub / usd).toFixed(2);
-          rubInEur = (rub / eur).toFixed(2);
-          if (rubResult) {
-            document.getElementById('rubrub').innerHTML = rub;
-            document.getElementById('rubInEur').innerHTML = rubInUsd;
-            document.getElementById('rubInEur').innerHTML = rubInEur;
-          }
-          else {
-            var rubResult = "Ваши <span id=rubrub>" + rub + "</span>₽ равняются <span id=rubInUsd>" + rubInUsd + "</span>$ или <span id=rubInEur>" + rubInEur + "</span>€.";
-            document.getElementById('rubResult').innerHTML = rubResult;
+            return 0;
           }
         }
+
+        var rubCalc = function(rAmount, curExchRate, scale) {
+          return rAmount * scale / curExchRate;
+        }
+
+        var currencyInput = function(name) {
+          var output = +prompt("Введите значение " + name);
+          while (numChecker(output) == 1) {
+            output = +prompt("Неверное значение. \n\n 1. Значение должно быть больше нуля. \n 2. Для десятичной части используйте точку. \n\nПовторите ввод:");
+          }
+          if (name == "RUB") {
+            document.getElementById(name.toLowerCase() + 'Rub').innerHTML = output.toFixed(2);
+            document.getElementById(name.toLowerCase() + 'Usd').innerHTML = rubCalc(output, usd, 1).toFixed(2);
+            document.getElementById(name.toLowerCase() + 'Eur').innerHTML = rubCalc(output, eur, 1).toFixed(2);
+          }
+          else {
+            document.getElementById(name.toLowerCase() + 'Rub').innerHTML = output.toFixed(2);
+          }
+          return output;
+        }
+
+        var usdInput = document.getElementById('usdInput');
+        usdInput.onclick = function() {
+          if (clickCalc == 0) {
+            usd = currencyInput("USD");
+          }
+          else {
+            usd = currencyInput("USD");
+            document.getElementById('rubUsd').innerHTML =  rubCalc(rubAmmount, usd, 1).toFixed(2);
+          }
+        }
+
+        var eurInput = document.getElementById('eurInput');
+        eurInput.onclick = function() {
+          if (clickCalc == 0) {
+            eur = currencyInput("EUR");
+          }
+          else {
+            eur = currencyInput("EUR");
+            document.getElementById('rubEur').innerHTML =  rubCalc(rubAmmount, eur, 1).toFixed(2);
+
+          }
+        }
+
+        var rubInput = document.getElementById('rubInput');
+        rubInput.onclick = function() {
+        if (clickCalc == 0) {
+          document.getElementById('rubResult').innerHTML = "<span id=rubRub></span> рублей равняются <span id=rubUsd></span> долларов или <span id=rubEur></span> евро."
+          rubAmmount = currencyInput("RUB");
+          clickCalc++;
+        }
+        else {
+          rubAmmount = currencyInput("RUB");
+        }
+       }
       }
     </script>
   </head>
@@ -96,9 +109,9 @@
             <p id="rubResult">
 
             </p>
-            <a href="#" class="inboxLink" id="usd">Задать курс доллара</a>/
-            <a href="#" class="inboxLink" id="eur">Задать курс евро</a>/
-            <a href="#" class="inboxLink" id="rub">Задать сумму в рублях</a>
+            <a href="#" class="inboxLink" id="usdInput">Задать курс доллара</a>/
+            <a href="#" class="inboxLink" id="eurInput">Задать курс евро</a>/
+            <a href="#" class="inboxLink" id="rubInput">Задать сумму в рублях</a>
             <p>
 
             </p>
