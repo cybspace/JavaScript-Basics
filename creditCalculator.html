@@ -19,7 +19,7 @@
         }
         if (countLoan == 0) {
           countLoan++;
-          document.getElementById('loan').innerHTML = "Сумма кредита: <span id=loanAmount>" + loan + "</span>."
+          document.getElementById('loan').innerHTML = "Сумма кредита: <span id=loanAmount>" + loan.toFixed(2) + "</span>."
         }
         else {
           document.getElementById('loanAmount').innerHTML = loan;
@@ -34,7 +34,7 @@
         }
         if (countInterest == 0) {
           countInterest++;
-          document.getElementById('interest').innerHTML = "Процентная ставка: <span id=interestAmount>" + interest + "</span>%."
+          document.getElementById('interest').innerHTML = "Процентная ставка: <span id=interestAmount>" + interest.toFixed(2) + "</span>%."
         }
         else {
           document.getElementById('interestAmount').innerHTML = interest;
