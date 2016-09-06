@@ -10,6 +10,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.links  {
+    color: #40678a;
+    font-size: 24px;
+    font-weight: 100;
+    text-align: center;
+    text-decoration: none;
+    padding-right:10px;
+}
+
 #header {
     border: 1px solid #b5b7ba;
     background-color: #dfdfdf;
@@ -119,15 +128,6 @@ body {
     text-align: center;
     text-decoration: none;
     padding-right:10px;
-}
-
-#content #box_text #links  {
-    color: #40678a;
-    font-size: 24px;
-    font-weight: 100;
-    text-align: center;
-    text-decoration: none;
-    padding-right:30px;
 }
 
 #content .media {
