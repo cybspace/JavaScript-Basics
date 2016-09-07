@@ -16,6 +16,8 @@ window.onload = function () {
     document.getElementById('currencyExchange_2').onclick = currencyExchangeProgram;
     document.getElementById('creditCalculator_1').onclick = creditCalculatorProgram;
     document.getElementById('creditCalculator_2').onclick = creditCalculatorProgram;
+    document.getElementById('depositCalculator_1').onclick = depositCalculatorProgram;
+    document.getElementById('depositCalculator_2').onclick = depositCalculatorProgram;
     
 
 }
