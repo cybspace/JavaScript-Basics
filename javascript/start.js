@@ -14,5 +14,8 @@ window.onload = function () {
     document.getElementById('guessNumber_2').onclick = guessNumberProgram;
     document.getElementById('currencyExchange_1').onclick = currencyExchangeProgram;
     document.getElementById('currencyExchange_2').onclick = currencyExchangeProgram;
+    document.getElementById('creditCalculator_1').onclick = creditCalculatorProgram;
+    document.getElementById('creditCalculator_2').onclick = creditCalculatorProgram;
+    
 
 }
