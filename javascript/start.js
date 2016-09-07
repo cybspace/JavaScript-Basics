@@ -12,5 +12,7 @@ window.onload = function () {
     document.getElementById('riddlesProgram_2').onclick = riddlesProgram;
     document.getElementById('guessNumber_1').onclick = guessNumberProgram;
     document.getElementById('guessNumber_2').onclick = guessNumberProgram;
+    document.getElementById('currencyExchange_1').onclick = currencyExchangeProgram;
+    document.getElementById('currencyExchange_2').onclick = currencyExchangeProgram;
 
 }
