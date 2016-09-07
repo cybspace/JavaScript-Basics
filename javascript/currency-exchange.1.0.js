@@ -6,7 +6,7 @@ function currencyExchangeProgram () {
     var usdExchRate = 65.44, eurExchRate = 73.89, rubAmmount, clickCalc = 0;
 
     document.getElementById('pageName').innerHTML = "Конвертер валют";
-    document.getElementById('intro').innerHTML = "Я помогу тебе расчитать свои рубли в долларах и евро.";
+    document.getElementById('intro').innerHTML = "Я помогу пересчитать любую сумму рублей в доллары и евро.";
     document.getElementById('input_1').innerHTML = "Курс доллара: <span id=usdRub>" + usdExchRate + "</span>";
     document.getElementById('input_2').innerHTML = "Курс евро: <span id=eurRub>" + eurExchRate + "</span>";
     document.getElementById('input_3').innerHTML = "";

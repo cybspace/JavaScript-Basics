@@ -3,7 +3,7 @@
  */
 function creditCalculatorProgram () {
     document.getElementById('pageName').innerHTML = "Кредитный калькулятор";
-    document.getElementById('intro').innerHTML = "Я помогу тебе расчитать график платежей по кредиту.";
+    document.getElementById('intro').innerHTML = "Я помогу расчитать график платежей по кредиту.";
     document.getElementById('input_1').innerHTML = "";
     document.getElementById('input_2').innerHTML = "";
     document.getElementById('input_3').innerHTML = "";
