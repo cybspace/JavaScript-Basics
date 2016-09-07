@@ -10,5 +10,7 @@ window.onload = function () {
     //"program" calls on link clicks
     document.getElementById('riddlesProgram_1').onclick = riddlesProgram;
     document.getElementById('riddlesProgram_2').onclick = riddlesProgram;
+    document.getElementById('guessNumber_1').onclick = guessNumberProgram;
+    document.getElementById('guessNumber_2').onclick = guessNumberProgram;
 
 }
