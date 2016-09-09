@@ -70,7 +70,7 @@ function depositCalculatorProgram () {
 
     document.getElementById('timeInput').onclick = function () {
         time = inputCheck(true);
-        document.getElementById('input_3').innerHTML = "Срок: <span id=timeValue>" + time + "</span>";
+        document.getElementById('input_3').innerHTML = "Срок в годах: <span id=timeValue>" + time + "</span>";
         document.getElementById('result').innerHTML = "";
     };
 

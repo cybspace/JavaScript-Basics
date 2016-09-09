@@ -55,7 +55,7 @@ function creditCalculatorProgram () {
         }
         if (countTime == 0) {
             countTime++;
-            document.getElementById('input_3').innerHTML = "<span id=time>Срок кредитования: <span id=timeAmount>" + time + "</span> месяцев.</span>";
+            document.getElementById('input_3').innerHTML = "<span id=time>Срок кредитования в месяцах: <span id=timeAmount>" + time + "</span>.</span>";
             document.getElementById('result').innerHTML = "";
         }
         else {
