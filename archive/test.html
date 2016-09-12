@@ -1,17 +1,31 @@
 <meta charset="utf-8">
 <script type="text/javascript">
-  function getRate(from, to) {
-    var script = document.createElement('script');
-    script.setAttribute('src', "http://query.yahooapis.com/v1/public/yql?q=select%20rate%2Cname%20from%20csv%20where%20url%3D'http%3A%2F%2Fdownload.finance.yahoo.com%2Fd%2Fquotes%3Fs%3D"+from+to+"%253DX%26f%3Dl1n'%20and%20columns%3D'rate%2Cname'&format=json&callback=parseExchangeRate");
-    document.body.appendChild(script);
-  }
-  function parseExchangeRate(data) {
-    var name = data.query.results.row.name;
-    var rate = parseFloat(data.query.results.row.rate, 10);
-    alert("Exchange rate " + name + " is " + rate);
-  }
+    function numInput(isPositive, i) {
+        var input = +prompt("Введите " + i + " число");
+        if (isPositive) {
+            while (isNaN(input) || input < 0) {
+                input = +prompt("Ошибка! \n\nЧисло должно быть положительным. \nДля разделителя десятичной части используйте точку. \n\nВведите еще раз");
+            }
+        }
+        else {
+            while (isNaN(input)) {
+                input = +prompt("Ошибка! \n\nДля разделителя десятичной части используйте точку. \n\nВведите еще раз");
+            }
+        }
+        return input;
+    }
 
-  getRate("SEK", "USD");
-  getRate("USD", "SEK");
+    function requrs(n) {
+        if (n != 1 && n!= 0) {
+            return (requrs(n - 1) * n)
+        } else {
+            return 1
+        };
+    }
+
+
+    var a = numInput(true, "искомое");
+    alert(requrs(a));
 
 </script>
+
