@@ -6,7 +6,7 @@
   <title>Кредитный калькулятор</title>
   <script type="text/javascript">
     window.onload = function() {
-      document.getElementById('intro').innerHTML = "Я помогу тебе расчитать график платежей."
+      document.getElementById('intro').innerHTML = "Я помогу тебе расчитать график платежей.";
 
       var loan, interest, time;
       var countLoan = 0, countInterest = 0, countTime = 0, countCalculate = 0;
@@ -24,7 +24,7 @@
         else {
           document.getElementById('loanAmount').innerHTML = loan;
         }
-      }
+      };
       // Вводим сумму процентов
       var interestInput = document.getElementById('interestInput');
       interestInput.onclick = function() {
@@ -39,7 +39,7 @@
         else {
           document.getElementById('interestAmount').innerHTML = interest;
         }
-      }
+      };
       // Вводим срок
       var timeInput = document.getElementById('timeInput');
       timeInput.onclick = function() {
@@ -54,7 +54,7 @@
         else {
           document.getElementById('timeAmount').innerHTML = time;
         }
-      }
+      };
       // Рассчитываем график
       var calculate = document.getElementById('calculate');
       calculate.onclick = function() {
@@ -74,7 +74,7 @@
           var paymentLoan, paymentInterest, loanRest;
           loanRest = loan;
 
-        document.getElementById('resultTable').innerHTML = "График платежей: <br/>"
+        document.getElementById('resultTable').innerHTML = "График платежей: <br/>";
 
         for (var i = 1; i <= time; i++) {
             paymentInterest = loanRest * monthInterest;

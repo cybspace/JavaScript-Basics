@@ -58,14 +58,14 @@ window.onload = function() {
     deposit = inputCheck(false);
     document.getElementById('deposit').innerHTML = "Сумма депозита: <span id=depositValue>" + deposit.toFixed(2) + "</span>";
     document.getElementById('result').innerHTML = "";
-  }
+  };
 
   var persentInput = document.getElementById('persentInput');
   persentInput.onclick = function () {
     persent = inputCheck(false);
     document.getElementById('persent').innerHTML = "Процентная ставка: <span id=persentValue>" + persent.toFixed(2) + "</span>%";
     document.getElementById('result').innerHTML = "";
-  }
+  };
 
 
   var timeInput = document.getElementById('timeInput');
@@ -73,12 +73,12 @@ window.onload = function() {
     time = inputCheck(true);
     document.getElementById('time').innerHTML = "Срок: <span id=timeValue>" + time + "</span>";
     document.getElementById('result').innerHTML = "";
-  }
+  };
 
   var calcMonthly = document.getElementById('calcMonthly');
   calcMonthly.onclick = function () {
     depoCalc(deposit, persent, time, 12);
-  }
+  };
 
   var calcYearly = document.getElementById('calcYearly');
   calcYearly.onclick = function () {

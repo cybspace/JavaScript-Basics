@@ -20,4 +20,4 @@ window.onload = function () {
     document.getElementById('depositCalculator_2').onclick = depositCalculatorProgram;
     
 
-}
+};

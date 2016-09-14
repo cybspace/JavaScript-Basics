@@ -9,10 +9,10 @@
 
         var usd = 65.44, eur = 73.89, usdRub, eurRub, rubAmmount, clickCalc = 0;
 
-        document.getElementById('intro').innerHTML = "Я помогу тебе расчитать свои рубли в долларах и евро."
-        document.getElementById('usdResult').innerHTML = "Курс доллара: 1$ = <span id=usdRub>" + usd + "</span>₽."
-        document.getElementById('eurResult').innerHTML = "Курс евро: 1€ = <span id=eurRub>" + eur + "</span>₽."
-        document.getElementById('rubResult').innerHTML = "Необходимо задать сумму в рублях. Также ты можешь задать свои курсы для доллара и евро."
+        document.getElementById('intro').innerHTML = "Я помогу тебе расчитать свои рубли в долларах и евро.";
+        document.getElementById('usdResult').innerHTML = "Курс доллара: 1$ = <span id=usdRub>" + usd + "</span>₽.";
+        document.getElementById('eurResult').innerHTML = "Курс евро: 1€ = <span id=eurRub>" + eur + "</span>₽.";
+        document.getElementById('rubResult').innerHTML = "Необходимо задать сумму в рублях. Также ты можешь задать свои курсы для доллара и евро.";
 
         var numChecker = function(num) {
           var check = 0 - num;
@@ -23,11 +23,11 @@
           else {
             return 0;
           }
-        }
+        };
 
         var rubCalc = function(rAmount, curExchRate, scale) {
           return rAmount * scale / curExchRate;
-        }
+        };
 
         var currencyInput = function(name) {
           var output = +prompt("Введите значение " + name);
@@ -43,7 +43,7 @@
             document.getElementById(name.toLowerCase() + 'Rub').innerHTML = output.toFixed(2);
           }
           return output;
-        }
+        };
 
         var usdInput = document.getElementById('usdInput');
         usdInput.onclick = function() {
@@ -54,7 +54,7 @@
             usd = currencyInput("USD");
             document.getElementById('rubUsd').innerHTML =  rubCalc(rubAmmount, usd, 1).toFixed(2);
           }
-        }
+        };
 
         var eurInput = document.getElementById('eurInput');
         eurInput.onclick = function() {
@@ -66,12 +66,12 @@
             document.getElementById('rubEur').innerHTML =  rubCalc(rubAmmount, eur, 1).toFixed(2);
 
           }
-        }
+        };
 
         var rubInput = document.getElementById('rubInput');
         rubInput.onclick = function() {
         if (clickCalc == 0) {
-          document.getElementById('rubResult').innerHTML = "<span id=rubRub></span> рублей равняются <span id=rubUsd></span> долларов или <span id=rubEur></span> евро."
+          document.getElementById('rubResult').innerHTML = "<span id=rubRub></span> рублей равняются <span id=rubUsd></span> долларов или <span id=rubEur></span> евро.";
           rubAmmount = currencyInput("RUB");
           clickCalc++;
         }
