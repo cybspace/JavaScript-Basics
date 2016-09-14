@@ -51,7 +51,7 @@ function currencyExchangeProgram () {
             usdExchRate = currencyInput("USD");
             document.getElementById('rubUsd').innerHTML =  rubCalc(rubAmmount, usdExchRate, 1).toFixed(2);
         }
-    }
+    };
 
     document.getElementById('eurInput').onclick = function() {
         if (clickCalc == 0) {
@@ -62,11 +62,11 @@ function currencyExchangeProgram () {
             document.getElementById('rubEur').innerHTML =  rubCalc(rubAmmount, eurExchRate, 1).toFixed(2);
 
         }
-    }
+    };
 
     document.getElementById('rubInput').onclick = function() {
         if (clickCalc == 0) {
-            document.getElementById('result').innerHTML = "<span id=rubRub></span> рублей равняются <span id=rubUsd></span> долларов или <span id=rubEur></span> евро."
+            document.getElementById('result').innerHTML = "<span id=rubRub></span> рублей равняются <span id=rubUsd></span> долларов или <span id=rubEur></span> евро.";
             rubAmmount = currencyInput("RUB");
             clickCalc++;
         }
