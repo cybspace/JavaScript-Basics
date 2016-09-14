@@ -4,9 +4,9 @@
 function guessNumberProgram () {
     document.getElementById('pageName').innerHTML = "Угадай число";
     document.getElementById('intro').innerHTML = "Я загадал число от 0 до 100. Попробуй его угадать за 5 попыток!";
-    document.getElementById('input_1').innerHTML = "";
-    document.getElementById('input_2').innerHTML = "";
-    document.getElementById('input_3').innerHTML = "";
+    document.getElementById('output_1').innerHTML = "";
+    document.getElementById('output_2').innerHTML = "";
+    document.getElementById('output_3').innerHTML = "";
     document.getElementById('result').innerHTML = "";
     document.getElementById('programLinks').innerHTML = "<a href=# id=guessNumber>Начать!</a>";
 

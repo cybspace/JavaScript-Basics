@@ -1,9 +1,9 @@
 function riddlesProgram() {
     document.getElementById('pageName').innerHTML = "Загадки";
     document.getElementById('intro').innerHTML = "У меня есть для тебя несколько загадок. Попробуй разгадать!";
-    document.getElementById('input_1').innerHTML = "";
-    document.getElementById('input_2').innerHTML = "";
-    document.getElementById('input_3').innerHTML = "";
+    document.getElementById('output_1').innerHTML = "";
+    document.getElementById('output_2').innerHTML = "";
+    document.getElementById('output_3').innerHTML = "";
     document.getElementById('result').innerHTML = "";
     document.getElementById('programLinks').innerHTML = "<a href=# id=start>Начать!</a>";
 
@@ -14,12 +14,8 @@ function riddlesProgram() {
 
         function riddle(question, answer, alternateAnswer, alternateAnswerWriting) { // alternateAnswer для вариантов с двумя правильными ответами, alternateAnswerWriting - когда имеется другое написание ответа (например "звезды" и "здвёзды")
             var userAnswer = prompt(question);
-            if (alternateAnswer === undefined) {
-                alternateAnswer = answer;
-            }
-            if (alternateAnswerWriting === undefined) {
-                alternateAnswerWriting = answer;
-            }
+            alternateAnswer = alternateAnswer === undefined ? answer : alternateAnswer;
+            alternateAnswerWriting = alternateAnswerWriting === undefined ? answer : alternateAnswerWriting;
 
             if (userAnswer.toLowerCase() == answer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswerWriting.toLowerCase()) {
                 alert("Правильно!");

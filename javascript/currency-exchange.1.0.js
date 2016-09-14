@@ -7,9 +7,9 @@ function currencyExchangeProgram () {
 
     document.getElementById('pageName').innerHTML = "Конвертер валют";
     document.getElementById('intro').innerHTML = "Я помогу пересчитать любую сумму рублей в доллары и евро.";
-    document.getElementById('input_1').innerHTML = "Курс доллара: <span id=usdRub>" + usdExchRate + "</span>";
-    document.getElementById('input_2').innerHTML = "Курс евро: <span id=eurRub>" + eurExchRate + "</span>";
-    document.getElementById('input_3').innerHTML = "";
+    document.getElementById('output_1').innerHTML = "Курс доллара: <span id=usdRub>" + usdExchRate + "</span>";
+    document.getElementById('output_2').innerHTML = "Курс евро: <span id=eurRub>" + eurExchRate + "</span>";
+    document.getElementById('output_3').innerHTML = "";
     document.getElementById('result').innerHTML = "";
     document.getElementById('programLinks').innerHTML = "<a href=# class=inboxLink id=usdInput>Задать курс доллара</a>/<a href=# class=inboxLink id=eurInput>Задать курс евро</a>/<a href=# class=inboxLink id=rubInput>Задать сумму в рублях</a>";
 
