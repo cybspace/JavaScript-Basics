@@ -14,8 +14,8 @@ function riddlesProgram() {
 
         function riddle(question, answer, alternateAnswer, alternateAnswerWriting) { // alternateAnswer для вариантов с двумя правильными ответами, alternateAnswerWriting - когда имеется другое написание ответа (например "звезды" и "здвёзды")
             var userAnswer = prompt(question);
-            alternateAnswer = alternateAnswer === undefined ? answer : alternateAnswer;
-            alternateAnswerWriting = alternateAnswerWriting === undefined ? answer : alternateAnswerWriting;
+            if (alternateAnswer === undefined) alternateAnswer = answer;
+            if (alternateAnswerWriting === undefined) alternateAnswerWriting = answer;
 
             if (userAnswer.toLowerCase() == answer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswerWriting.toLowerCase()) {
                 alert("Правильно!");
