@@ -48,9 +48,9 @@ function creditCalculatorProgram () {
     };
 
     document.getElementById('calculate').onclick = function () {
-        loan = document.getElementById('loanInput').value;
-        interest = document.getElementById('interestInput').value;
-        time = document.getElementById('timeInput').value;
+        loan = parseFloat(document.getElementById('loanInput').value);
+        interest = parseFloat(document.getElementById('interestInput').value);
+        time = parseFloat(document.getElementById('timeInput').value);
         document.getElementById('result').innerHTML = "";
 
         if (inputCheck(loan) == false) {
@@ -59,7 +59,7 @@ function creditCalculatorProgram () {
         else if (inputCheck(interest) == false) {
             document.getElementById('result').innerHTML += "<span style=color:red;>Поцентная ставка не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>"
         }
-        else if (inputCheck(time) == false) {
+        else if (inputCheck(time, true) == false) {
             document.getElementById('result').innerHTML += "<span style=color:red;>Срок не задана или задан неверно: значение должно быть больше нуля и должно быть целым.</span><br/>"
         }
         else {
