@@ -11,24 +11,6 @@ function currencyExchangeProgram () {
     document.getElementById('result').innerHTML = "";
     document.getElementById('programLinks').innerHTML = "<a href=# class=inboxLink id=calculate>Рассчитать!</a>";
 
-    var inputCheck = function (value, isFull) {
-        if (isFull === undefined) isFull = false;
-
-        if (isNaN(value) || value <= 0) return false;
-        else if (isFull === true && (value - parseFloat(value).toFixed(0) !== 0)) return false;
-        else return true;
-    };
-
-    var getValue = function (name) {
-        if (name === undefined) name = "";
-        return document.getElementById(name + 'Input').value;
-    };
-
-    var insertMessage = function (elementId, message) {
-        if (message === undefined) message = "";
-        document.getElementById(elementId).innerHTML = message;
-    };
-
     var currencyExchanger = function (amount, rate, scale) {
         if (scale === undefined) scale = 1;
         if (amount === undefined || rate === undefined) {

@@ -12,29 +12,6 @@ function creditCalculatorProgram () {
 
     var loan, interest, time;
 
-    var inputCheck = function (value, isFull) {
-        if (isFull === undefined) isFull = false;
-
-        if (isNaN(value) || value <= 0) return false;
-        else if (isFull === true && (value - parseFloat(value).toFixed(0) !== 0)) return false;
-        else return true;
-    };
-
-    var getValue = function (name) {
-        if (name === undefined) name = "";
-        return document.getElementById(name + 'Input').value;
-    };
-
-    var insertMessage = function (elementId, message) {
-        if (message === undefined) message = "";
-        document.getElementById(elementId).innerHTML = message;
-    };
-
-    var updateMessage = function (elementId, message) {
-        if (message === undefined) message = "";
-        document.getElementById(elementId).innerHTML += message;
-    };
-
     var creditCalc = function (loan, interest, time) {
         if (isNaN(loan) || isNaN(interest) || isNaN(time)) {
             document.getElementById('result').innerHTML = "<span style=color:red;>Не заданы праметры для расчета или заданы не все параметры: сумма кредита, процентная ставка или срок. </span><br/>"
