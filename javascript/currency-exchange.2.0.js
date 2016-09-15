@@ -3,8 +3,6 @@
  */
 function currencyExchangeProgram () {
 
-    var usdExchRate = 65.44, eurExchRate = 73.89, rubAmmount, clickCalc = 0;
-
     document.getElementById('pageName').innerHTML = "Конвертер валют";
     document.getElementById('intro').innerHTML = "Я помогу пересчитать любую сумму рублей в доллары и евро.";
     document.getElementById('output_1').innerHTML = "Курс доллара: <input type=text id=usdInput />";
@@ -15,21 +13,15 @@ function currencyExchangeProgram () {
 
     var inputCheck = function (value, isFull) {
         if (isFull === undefined) isFull = false;
-        if (isFull == true && (isNaN(value) || value <= 0 || (value - value.toFixed(0)) !== 0)) return false;
-        else if (isFull == false && (isNaN(value) || value <= 0)) return isFull;
+
+        if (isNaN(value) || value <= 0) return false;
+        else if (isFull === true && (value - parseFloat(value).toFixed(0) !== 0)) return false;
         else return true;
     };
 
-    var currencyExchanger = function (amount, curExchRate, scale) {
-        if (amount === undefined || curExchRate === undefined || scale ===undefined) {
-            return 0;
-        }
-        return amount * scale / curExchRate;
-    };
-
-    var getFloatValue = function (name) {
+    var getValue = function (name) {
         if (name === undefined) name = "";
-        return parseFloat(document.getElementById(name + 'Input').value);
+        return document.getElementById(name + 'Input').value;
     };
 
     var insertMessage = function (elementId, message) {
@@ -37,11 +29,19 @@ function currencyExchangeProgram () {
         document.getElementById(elementId).innerHTML = message;
     };
 
+    var currencyExchanger = function (amount, rate, scale) {
+        if (scale === undefined) scale = 1;
+        if (amount === undefined || rate === undefined) {
+            return 0;
+        }
+        return amount * scale / rate;
+    };
+
     document.getElementById('calculate').onclick = function () {
         var usd, eur, rub, message;
-        usd = getFloatValue("usd");
-        eur = getFloatValue("eur");
-        rub = getFloatValue("rub");
+        usd = getValue("usd");
+        eur = getValue("eur");
+        rub = getValue("rub");
         insertMessage("result");
         if (inputCheck(usd) == false) {
             message = "<span style=color:red;>Курс доллара не задан, или задан неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span>";

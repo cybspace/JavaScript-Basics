@@ -12,12 +12,28 @@ function creditCalculatorProgram () {
 
     var loan, interest, time;
 
-   var inputCheck = function (value, isFull) {
-       if (isFull === undefined) isFull = false;
-       if (isFull == true && (isNaN(value) || value <= 0 || (value - value.toFixed(0)) !== 0)) return false;
-       else if (isFull == false && (isNaN(value) || value <= 0)) return isFull;
-       else return true;
-   };
+    var inputCheck = function (value, isFull) {
+        if (isFull === undefined) isFull = false;
+
+        if (isNaN(value) || value <= 0) return false;
+        else if (isFull === true && (value - parseFloat(value).toFixed(0) !== 0)) return false;
+        else return true;
+    };
+
+    var getValue = function (name) {
+        if (name === undefined) name = "";
+        return document.getElementById(name + 'Input').value;
+    };
+
+    var insertMessage = function (elementId, message) {
+        if (message === undefined) message = "";
+        document.getElementById(elementId).innerHTML = message;
+    };
+
+    var updateMessage = function (elementId, message) {
+        if (message === undefined) message = "";
+        document.getElementById(elementId).innerHTML += message;
+    };
 
     var creditCalc = function (loan, interest, time) {
         if (isNaN(loan) || isNaN(interest) || isNaN(time)) {
@@ -27,10 +43,10 @@ function creditCalculatorProgram () {
             var k = interest / 100;
             var monthInterest = k / 12;
             var monthPayment = loan * (monthInterest + monthInterest / (Math.pow(1 + monthInterest, time) - 1));
-            var paymentLoan, paymentInterest, loanRest;
+            var paymentLoan, paymentInterest, loanRest, message;
             loanRest = loan;
 
-            document.getElementById('result').innerHTML = "График платежей: <br/>";
+            insertMessage("result", "График платежей: <br/>");
 
             for (var i = 1; i <= time; i++) {
                 paymentInterest = loanRest * monthInterest;
@@ -41,26 +57,32 @@ function creditCalculatorProgram () {
                     paymentLoan += loanRest;
                     loanRest -= loanRest;
                 }
-                document.getElementById('result').innerHTML += "Месяц: " + i + " Платеж: " + monthPayment.toFixed(2) + " Сумма ОД: " + paymentLoan.toFixed(2) + " Сумма %: " + paymentInterest.toFixed(2) + " Остаток: " + loanRest.toFixed(2) + "</br>";
+                message = "Месяц: " + i + " Платеж: " + monthPayment.toFixed(2) + " Сумма ОД: " + paymentLoan.toFixed(2) + " Сумма %: " + paymentInterest.toFixed(2) + " Остаток: " + loanRest.toFixed(2) + "</br>";
+                updateMessage("result", message);
             }
-            document.getElementById('result').innerHTML += "<br/>Итого переплата по кредиту: " + ( monthPayment * time - loan ).toFixed(2) + ".";
+            message = "<br/>Итого переплата по кредиту: " + ( monthPayment * time - loan ).toFixed(2) + ".";
+            updateMessage("result", message);
         }
     };
 
     document.getElementById('calculate').onclick = function () {
-        loan = parseFloat(document.getElementById('loanInput').value);
-        interest = parseFloat(document.getElementById('interestInput').value);
-        time = parseFloat(document.getElementById('timeInput').value);
-        document.getElementById('result').innerHTML = "";
+        loan = getValue("loan");
+        interest = getValue("interest");
+        time = getValue("time");
+        insertMessage("result");
+        var message;
 
         if (inputCheck(loan) == false) {
-            document.getElementById('result').innerHTML += "<span style=color:red;>Сумма кредита не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>"
+            message = "<span style=color:red;>Сумма кредита не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>";
+            insertMessage("result", message);
         }
         else if (inputCheck(interest) == false) {
-            document.getElementById('result').innerHTML += "<span style=color:red;>Поцентная ставка не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>"
+            message = "<span style=color:red;>Поцентная ставка не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>";
+            insertMessage("result", message);
         }
         else if (inputCheck(time, true) == false) {
-            document.getElementById('result').innerHTML += "<span style=color:red;>Срок не задана или задан неверно: значение должно быть больше нуля и должно быть целым.</span><br/>"
+            message = "<span style=color:red;>Срок не задана или задан неверно: значение должно быть больше нуля и должно быть целым.</span><br/>";
+            insertMessage("result", message);
         }
         else {
             creditCalc(loan, interest, time);
