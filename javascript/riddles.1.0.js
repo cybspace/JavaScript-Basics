@@ -7,7 +7,23 @@ function riddlesProgram() {
     document.getElementById('result').innerHTML = "";
     document.getElementById('programLinks').innerHTML = "<a href=# id=start>Начать!</a>";
 
-    var a = document.getElementById('start');
+    function riddle(question, answer, alternateAnswer, alternateAnswerWriting) { // alternateAnswer для вариантов с двумя правильными ответами, alternateAnswerWriting - когда имеется другое написание ответа (например "звезды" и "здвёзды")
+        var userAnswer = prompt(question);
+        if (alternateAnswer === undefined) alternateAnswer = answer;
+        if (alternateAnswerWriting === undefined) alternateAnswerWriting = answer;
+
+        insertMessage("output_1", question);
+
+        if (userAnswer.toLowerCase() == answer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswerWriting.toLowerCase()) {
+            insertMessage("result", "Правильно!");
+            count++;
+        }
+        else {
+            insertMessage("result", "Увы, неверно...");
+        }
+    }
+
+    /*var a = document.getElementById('start');
     a.onclick = function () {
 
         var count = 0;
@@ -32,5 +48,5 @@ function riddlesProgram() {
 
         document.getElementById('result').innerHTML = "Вы угадали " + count + " из 3-х загадок! <br/><br/>Правильные ответы 1: человек, 2: звезды или созвездия, 3: орган или сердце.";
 
-        };
+        };*/
 }
