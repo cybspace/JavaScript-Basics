@@ -21,9 +21,9 @@ function currencyExchangeProgram () {
 
     document.getElementById('calculate').onclick = function () {
         var usd, eur, rub, message;
-        usd = getValue("usd");
-        eur = getValue("eur");
-        rub = getValue("rub");
+        usd = getValue("usdInput");
+        eur = getValue("eurInput");
+        rub = getValue("rubInput");
         insertMessage("result");
         if (inputCheck(usd) == false) {
             message = "<span style=color:red;>Курс доллара не задан, или задан неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span>";

@@ -33,9 +33,9 @@ function depositCalculatorProgram () {
 
     var calculate = function (timeMultiplier) {
         var deposit, interest, time;
-        deposit = getValue("depo");
-        interest = getValue("interest");
-        time = getValue("time");
+        deposit = getValue("depoInput");
+        interest = getValue("interestInput");
+        time = getValue("timeInput");
         var message;
 
         if (inputCheck(deposit) == false) {

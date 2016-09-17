@@ -43,9 +43,9 @@ function creditCalculatorProgram () {
     };
 
     document.getElementById('calculate').onclick = function () {
-        loan = getValue("loan");
-        interest = getValue("interest");
-        time = getValue("time");
+        loan = getValue("loanInput");
+        interest = getValue("interestInput");
+        time = getValue("timeIbput");
         insertMessage("result");
         var message;
 

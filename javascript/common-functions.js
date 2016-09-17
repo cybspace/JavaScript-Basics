@@ -14,7 +14,12 @@ var inputCheck = function (value, isFull) {
 //Получаем значение из textbox
 var getValue = function (name) {
     if (name === undefined) name = "";
-    return +document.getElementById(name + 'Input').value;
+    return +document.getElementById(name).value;
+};
+
+var getStringValue = function (name) {
+    if (name === undefined) name = "";
+    return document.getElementById(name).value;
 };
 
 //записываем значение в нужный тег
