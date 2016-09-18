@@ -5,26 +5,22 @@ function riddlesProgram() {
     document.getElementById('output_2').innerHTML = "";
     document.getElementById('output_3').innerHTML = "";
     document.getElementById('result').innerHTML = "";
-    document.getElementById('programLinks').innerHTML = "<a href=# id=start>Начать!</a>";
+    document.getElementById('programLinks').innerHTML = "<a href=# id=start>Проверить!</a>";
 
     function riddle(id, question) {
         if (alternateAnswer === undefined) alternateAnswer = answer;
         if (alternateAnswerWriting === undefined) alternateAnswerWriting = answer;
 
-        updateMessage("output_1", question);
-        insertMessage("output_2", "<input type=text id=userAnswer>");
-        insertMessage("programLinks", "<a href=# id=answer>Ответить!</a>");
+        var target = "output_" + id;
+        insertMessage(target, question);
+        updateMessage(target, "<br/><input type=text id=userAnswer_" + id + ">");
     }
 
-    function checkAnswer (answer, alternateAnswer, alternateAnswerWriting) { // alternateAnswer для вариантов с двумя правильными ответами, alternateAnswerWriting - когда имеется другое написание ответа (например "звезды" и "здвёзды")
-            var userAnswer = getStringValue("userAnswer");
-
+    function checkAnswer (userAnswer, answer, alternateAnswer, alternateAnswerWriting) { // alternateAnswer для вариантов с двумя правильными ответами, alternateAnswerWriting - когда имеется другое написание ответа (например "звезды" и "здвёзды")
             if (userAnswer.toLowerCase() == answer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswer.toLowerCase() || userAnswer.toLowerCase() == alternateAnswerWriting.toLowerCase()) {
-                insertMessage("output_1", "Правильно!<br/>");
                 return 1;
             }
             else {
-                insertMessage("output_1", "Увы, неверно...<br/>");
                 return 0;
             }
     }
