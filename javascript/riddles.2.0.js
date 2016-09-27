@@ -1,3 +1,4 @@
+"use strict"
 function riddlesProgram() {
     document.getElementById('pageName').innerHTML = "Загадки";
     document.getElementById('intro').innerHTML = "У меня есть для тебя несколько загадок. Попробуй разгадать!";

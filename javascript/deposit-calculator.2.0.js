@@ -1,6 +1,7 @@
 /**
  * Created by spacemonk on 07/09/2016.
  */
+"use strict"
 function depositCalculatorProgram () {
     document.getElementById('pageName').innerHTML = "Депозитный калькулятор";
     document.getElementById('intro').innerHTML = "Я помогу рассчитать твой доход от депозитного вклада.";

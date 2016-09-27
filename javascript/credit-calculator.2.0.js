@@ -1,6 +1,7 @@
 /**
  * Created by spacemonk on 07/09/2016.
  */
+"use strict"
 function creditCalculatorProgram () {
     document.getElementById('pageName').innerHTML = "Кредитный калькулятор";
     document.getElementById('intro').innerHTML = "Я помогу расчитать график платежей по кредиту.";

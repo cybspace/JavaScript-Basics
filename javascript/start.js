@@ -1,6 +1,7 @@
 /**
  * Created by dkolontsov on 06.09.2016.
  */
+"use strict"
 window.onload = function () {
 
     //index.html

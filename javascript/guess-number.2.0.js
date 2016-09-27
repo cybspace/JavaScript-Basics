@@ -1,6 +1,7 @@
 /**
  * Created by spacemonk on 07/09/2016.
  */
+"use strict"
 function guessNumberProgram () {
     document.getElementById('pageName').innerHTML = "Угадай число";
     document.getElementById('intro').innerHTML = "Я загадал число от 0 до 100. Попробуй его угадать за 5 попыток!";

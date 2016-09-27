@@ -1,6 +1,7 @@
 /**
  * Created by spacemonk on 15/09/2016.
  */
+"use strict"
 //Проверяем входящее значение
 var inputCheck = function (value, isFull) {
     if (isFull === undefined) isFull = false;
