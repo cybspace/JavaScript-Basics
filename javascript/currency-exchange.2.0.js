@@ -2,7 +2,6 @@
  * Created by spacemonk on 07/09/2016.
  */
 function currencyExchangeProgram () {
-
     document.getElementById('pageName').innerHTML = "Конвертер валют";
     document.getElementById('intro').innerHTML = "Я помогу пересчитать любую сумму рублей в доллары и евро.";
     document.getElementById('output_1').innerHTML = "Курс доллара: <input type=text id=usdInput />";

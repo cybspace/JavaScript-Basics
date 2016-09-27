@@ -45,7 +45,7 @@ function creditCalculatorProgram () {
     document.getElementById('calculate').onclick = function () {
         loan = getValue("loanInput");
         interest = getValue("interestInput");
-        time = getValue("timeIbput");
+        time = getValue("timeInput");
         insertMessage("result");
         var message;
 
