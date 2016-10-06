@@ -34,8 +34,8 @@ function guessNumberProgram () {
     };
 
     document.getElementById('checkAnswer').onclick = function () {
-        var userAnswer = getValue("userAnswer");
-        if (inputCheck(userAnswer, true) == false || userAnswer > 100) {
+        var userAnswer = getNumValue("userAnswer");
+        if (checkInput(userAnswer, true) == false || userAnswer > 100) {
             insertMessage("output_1", "Неверное значение!<br/>Число должно быть от 0 до 100 и целое!<br/>Эту попытку не засчитываю!");
         }
         else {
@@ -52,7 +52,7 @@ function guessNumberProgram () {
                 else {
                     insertMessage("output_1", "Мое число меньше!");
                 }
-                updateMessage("output_1", "<br/>Использовано попыток: " + count + ".");
+                addMessage("output_1", "<br/>Использовано попыток: " + count + ".");
                 count += 1;
             }
             else if (checkNumber(userAnswer, number) == 0 && count < 5) {

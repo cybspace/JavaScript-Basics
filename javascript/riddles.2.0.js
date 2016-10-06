@@ -12,7 +12,7 @@ function riddlesProgram() {
     function riddle(id, question) {
         var target = "output_" + id;
         insertMessage(target, question);
-        updateMessage(target, "<br/><input type=text id=userAnswer_" + id + ">");
+        addMessage(target, "<br/><input type=text id=userAnswer_" + id + ">");
     }
 
     function checkAnswer (userAnswer, answer, alternateAnswer, alternateAnswerWriting) { // alternateAnswer для вариантов с двумя правильными ответами, alternateAnswerWriting - когда имеется другое написание ответа (например "звезды" и "здвёзды")

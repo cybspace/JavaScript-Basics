@@ -3,7 +3,7 @@
  */
 "use strict"
 //Проверяем входящее значение
-var inputCheck = function (value, isFull) {
+var checkInput = function (value, isFull) {
     if (isFull === undefined) isFull = false;
 
     if (isNaN(value) || value <= 0) return false;
@@ -13,7 +13,7 @@ var inputCheck = function (value, isFull) {
 
 
 //Получаем значение из textbox
-var getValue = function (name) {
+var getNumValue = function (name) {
     if (name === undefined) name = "";
     return +document.getElementById(name).value;
 };
@@ -23,14 +23,14 @@ var getStringValue = function (name) {
     return document.getElementById(name).value;
 };
 
-//записываем значение в нужный тег
+//перезаписываем значение в нужный тег
 var insertMessage = function (elementId, message) {
     if (message === undefined) message = "";
     document.getElementById(elementId).innerHTML = message;
 };
 
-//обновляем значение в нужном теге
-var updateMessage = function (elementId, message) {
+//добавляем значение в нужном теге
+var addMessage = function (elementId, message) {
     if (message === undefined) message = "";
     document.getElementById(elementId).innerHTML += message;
 };

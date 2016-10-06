@@ -23,31 +23,31 @@ function depositCalculatorProgram () {
             periodIncome = income * k / timeMultiplier;
             income = income + periodIncome;
             message = "Сумма депозита после " + i + " " + timeString + ": " + income.toFixed(2) + ", доход от процента: " + periodIncome.toFixed(2) + ".<br/>";
-            updateMessage("result", message);
+            addMessage("result", message);
             if (i == time) {
                 income -= deposit;
                 message = "<br/>Итоговый доход составил: " + income.toFixed(2) + ".<br/>";
-                updateMessage("result", message);
+                addMessage("result", message);
             }
         }
     };
 
     var calculate = function (timeMultiplier) {
         var deposit, interest, time;
-        deposit = getValue("depoInput");
-        interest = getValue("interestInput");
-        time = getValue("timeInput");
+        deposit = getNumValue("depoInput");
+        interest = getNumValue("interestInput");
+        time = getNumValue("timeInput");
         var message;
 
-        if (inputCheck(deposit) == false) {
+        if (checkInput(deposit) == false) {
             message = "<span style=color:red;>Сумма депозита не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>";
             insertMessage("result", message);
         }
-        else if (inputCheck(interest) == false) {
+        else if (checkInput(interest) == false) {
             message = "<span style=color:red;>Поцентная ставка не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>";
             insertMessage("result", message);
         }
-        else if (inputCheck(time, true) == false) {
+        else if (checkInput(time, true) == false) {
             message = "<span style=color:red;>Срок не задана или задан неверно: значение должно быть больше нуля и должно быть целым.</span><br/>";
             insertMessage("result", message);
         }

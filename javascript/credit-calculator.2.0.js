@@ -36,29 +36,29 @@ function creditCalculatorProgram () {
                     loanRest -= loanRest;
                 }
                 message = "Месяц: " + i + " Платеж: " + monthPayment.toFixed(2) + " Сумма ОД: " + paymentLoan.toFixed(2) + " Сумма %: " + paymentInterest.toFixed(2) + " Остаток: " + loanRest.toFixed(2) + "</br>";
-                updateMessage("result", message);
+                addMessage("result", message);
             }
             message = "<br/>Итого переплата по кредиту: " + ( monthPayment * time - loan ).toFixed(2) + ".";
-            updateMessage("result", message);
+            addMessage("result", message);
         }
     };
 
     document.getElementById('calculate').onclick = function () {
-        loan = getValue("loanInput");
-        interest = getValue("interestInput");
-        time = getValue("timeInput");
+        loan = getNumValue("loanInput");
+        interest = getNumValue("interestInput");
+        time = getNumValue("timeInput");
         insertMessage("result");
         var message;
 
-        if (inputCheck(loan) == false) {
+        if (checkInput(loan) == false) {
             message = "<span style=color:red;>Сумма кредита не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>";
             insertMessage("result", message);
         }
-        else if (inputCheck(interest) == false) {
+        else if (checkInput(interest) == false) {
             message = "<span style=color:red;>Поцентная ставка не задана или задана неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span><br/>";
             insertMessage("result", message);
         }
-        else if (inputCheck(time, true) == false) {
+        else if (checkInput(time, true) == false) {
             message = "<span style=color:red;>Срок не задана или задан неверно: значение должно быть больше нуля и должно быть целым.</span><br/>";
             insertMessage("result", message);
         }

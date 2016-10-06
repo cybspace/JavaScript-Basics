@@ -21,19 +21,19 @@ function currencyExchangeProgram () {
 
     document.getElementById('calculate').onclick = function () {
         var usd, eur, rub, message;
-        usd = getValue("usdInput");
-        eur = getValue("eurInput");
-        rub = getValue("rubInput");
+        usd = getNumValue("usdInput");
+        eur = getNumValue("eurInput");
+        rub = getNumValue("rubInput");
         insertMessage("result");
-        if (inputCheck(usd) == false) {
+        if (checkInput(usd) == false) {
             message = "<span style=color:red;>Курс доллара не задан, или задан неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span>";
             insertMessage("result", message);
         }
-        else if (inputCheck(eur) == false) {
+        else if (checkInput(eur) == false) {
             message = "<span style=color:red;>Курс евро не задан, или задан неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span>";
             insertMessage("result", message);
         }
-        else if (inputCheck(rub) == false) {
+        else if (checkInput(rub) == false) {
             message = "<span style=color:red;>Сумма в рублях не задана, или задан неверно: значение должно быть больше нуля, для десятичной части используйте точку.</span>";
             insertMessage("result", message);
         }
